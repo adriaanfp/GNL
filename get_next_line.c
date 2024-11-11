@@ -91,3 +91,18 @@ char	*read_fl(int fd, char *res)
 	free(buffer);
 	return (res);
 }
+
+char	*get_next_line(int fd);
+{
+	static char	*buffer;
+	char		*line;
+
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+		return (NULL);
+	buffer = read_fl(fd, buffer);
+	if (!buffer)
+		return (NULL);
+	line = ft_line(buffer);
+	buffer = ft_next_line(buffer);
+	return (line);
+}
