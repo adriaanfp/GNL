@@ -6,7 +6,7 @@
 /*   By: aflores- <aflores-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 17:52:55 by aflores-          #+#    #+#             */
-/*   Updated: 2024/11/11 15:48:54 by aflores-         ###   ########.fr       */
+/*   Updated: 2024/11/11 15:50:23 by aflores-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ char	*ft_line(char *buffer)
 char	*read_fl(int fd, char *res)
 {
 	char	*buffer;
-	int		*byte_read;
+	int		byte_read;
 
 	if (!res)
 		res = ft_calloc(1, 1);
