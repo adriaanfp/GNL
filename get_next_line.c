@@ -6,7 +6,7 @@
 /*   By: aflores- <aflores-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 17:52:55 by aflores-          #+#    #+#             */
-/*   Updated: 2024/11/08 15:27:26 by aflores-         ###   ########.fr       */
+/*   Updated: 2024/11/11 15:48:54 by aflores-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,30 @@ char	*ft_line(char *buffer)
 	if (buffer[i] && buffer[i] == '\n')
 		line[i++] = '\n';
 	return (line);
+}
+
+char	*read_fl(int fd, char *res)
+{
+	char	*buffer;
+	int		*byte_read;
+
+	if (!res)
+		res = ft_calloc(1, 1);
+	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	byte_read = 1;
+	while (byte_read > 0)
+	{
+		byte_read = read(fd, buffer, BUFFER_SIZE);
+		if (byte_read == -1)
+		{
+			free(buffer);
+			return (NULL);
+		}
+		buffer[byte_read] = 0;
+		res = ft_freejn(res, buffer);
+		if (ft_strchr(buffer, '\n'))
+			break;
+	}
+	free(buffer);
+	return (res);
 }
